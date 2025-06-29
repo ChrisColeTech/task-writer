@@ -146,7 +146,7 @@ describe('TaskGenerationService', () => {
       expect(result.content).toContain('### Rules');
       expect(result.metadata.title).toBe('React Frontend Setup');
       expect(result.metadata.framework).toBe('react');
-      expect(result.sections).toHaveLength(2); // Rules and Title sections
+      expect(result.sections).toHaveLength(6); // Rules, Title, Steps, Configuration, Code-blocks, Commands sections
       expect(result.estimatedComplexity).toBe(TaskComplexity.SIMPLE);
     });
 

@@ -346,13 +346,16 @@ export class TaskGenerationService {
     const rulesData = taskTemplatesData.rulesSections.standard;
     
     // Choose appropriate rules based on project type
+    let rules: string;
     if (projectAnalysis.projectType.includes('frontend') || projectAnalysis.framework === 'React') {
-      return rulesData.frontend;
+      rules = rulesData.frontend;
     } else if (projectAnalysis.projectType.includes('backend')) {
-      return rulesData.backend;
+      rules = rulesData.backend;
+    } else {
+      rules = rulesData.frontend; // Default
     }
     
-    return rulesData.frontend; // Default
+    return `### Rules\n${rules}`;
   }
 
   private buildTitleSection(template: TaskTemplate, config: TaskGenerationConfig): string {
