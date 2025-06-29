@@ -252,7 +252,7 @@ export default router
       // Check generated file structure
       const files = response.body.data.generatedFiles
       const fileNames = files.map((f: any) => f.name)
-      expect(fileNames.some(name => name.includes('Card'))).toBe(true)
+      expect(fileNames.some((name: string) => name.includes('Card'))).toBe(true)
     })
 
     test('should generate model scaffold', async () => {

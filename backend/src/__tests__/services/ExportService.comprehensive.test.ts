@@ -5,6 +5,7 @@ import { ExportService } from '../../services/ExportService';
 import { TaskGenerationService } from '../../services/TaskGenerationService';
 import { ScaffoldGenerationService } from '../../services/ScaffoldGenerationService';
 import { ExportFormat, FileEncoding } from '../../types/export';
+import { Platform, ScriptFormat } from '../../types/scaffoldGeneration';
 
 // Mock dependencies
 jest.mock('fs/promises');
@@ -184,32 +185,38 @@ describe('ExportService Comprehensive Tests', () => {
           scripts: [
             {
               filename: 'setup.sh',
-              platform: 'linux' as any,
-              format: 'bash' as any,
+              platform: Platform.LINUX,
+              format: ScriptFormat.BASH,
               content: '#!/bin/bash\nnpm install\nnpm run build',
-              executable: true
+              executable: true,
+              permissions: '755',
+              encoding: 'utf-8'
             },
             {
               filename: 'setup.ps1',
-              platform: 'windows' as any,
-              format: 'powershell' as any,
+              platform: Platform.WINDOWS,
+              format: ScriptFormat.POWERSHELL,
               content: 'npm install\nnpm run build',
-              executable: true
+              executable: true,
+              permissions: '755',
+              encoding: 'utf-8'
             }
           ],
           metadata: {
             projectName: 'Test Project',
-            platforms: ['linux', 'windows'],
-            formats: ['bash', 'powershell'],
+            framework: 'Node.js',
+            platforms: [Platform.LINUX, Platform.WINDOWS],
+            formats: [ScriptFormat.BASH, ScriptFormat.POWERSHELL],
             totalScripts: 2,
             generatedAt: new Date(),
-            estimatedDuration: '30 minutes'
+            estimatedRuntime: '30 minutes'
           },
           summary: {
-            totalScripts: 2,
-            platforms: ['linux', 'windows'],
-            formats: ['bash', 'powershell'],
-            estimatedSize: 1024
+            scriptsGenerated: 2,
+            platformsCovered: 2,
+            commandsIncluded: 5,
+            prerequisites: ['node', 'npm'],
+            outputFiles: ['setup.sh', 'setup.ps1']
           }
         });
 
@@ -555,24 +562,28 @@ describe('ExportService Comprehensive Tests', () => {
         mockScaffoldGeneration.generateFromConfig.mockResolvedValue({
           scripts: [{
             filename: `test.${format}`,
-            platform: 'cross-platform' as any,
-            format: format as any,
+            platform: Platform.CROSS_PLATFORM,
+            format: ScriptFormat.BASH,
             content: `# Test ${format} script`,
-            executable: true
+            executable: true,
+            permissions: '755',
+            encoding: 'utf-8'
           }],
           metadata: {
             projectName: config.projectName,
-            platforms: ['cross-platform'],
-            formats: [format],
+            framework: 'Generic',
+            platforms: [Platform.CROSS_PLATFORM],
+            formats: [ScriptFormat.BASH],
             totalScripts: 1,
             generatedAt: new Date(),
-            estimatedDuration: '10 minutes'
+            estimatedRuntime: '10 minutes'
           },
           summary: {
-            totalScripts: 1,
-            platforms: ['cross-platform'],
-            formats: [format],
-            estimatedSize: 256
+            scriptsGenerated: 1,
+            platformsCovered: 1,
+            commandsIncluded: 3,
+            prerequisites: ['bash'],
+            outputFiles: [`test.${format}`]
           }
         });
 

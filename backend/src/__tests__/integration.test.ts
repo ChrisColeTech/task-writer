@@ -47,8 +47,7 @@ describe('Integration Tests - Complete API Workflow', () => {
 
   beforeEach(async () => {
     // Clean up database state before each test
-    dbService.clearAllRecentFolders()
-    dbService.clearAllRecentProjects()
+    dbService.clearAllData()
   })
 
   async function createComplexTestProject() {

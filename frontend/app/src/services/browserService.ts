@@ -296,6 +296,7 @@ export class BrowserService {
   async scanDirectory(_path: string, _settings: any): Promise<{ tree: any[]; stats: any } | null> {
     // Browser fallback: return mock data or error
     console.warn('Directory scanning is not available in browser mode')
+    void _path; void _settings;
     return null
   }
 
@@ -315,7 +316,7 @@ export class BrowserService {
       
       URL.revokeObjectURL(url)
       return { success: true, filePath: 'scan-results.json' }
-    } catch (_error) {
+    } catch {
       return null
     }
   }
@@ -323,6 +324,7 @@ export class BrowserService {
   async generateTasks(_path: string, _settings: any): Promise<{ tasks: any[]; stats: any } | null> {
     // Browser fallback: not available
     console.warn('Task generation is not available in browser mode')
+    void _path; void _settings;
     return null
   }
 
@@ -343,7 +345,7 @@ export class BrowserService {
         URL.revokeObjectURL(url)
       }
       return { success: true, directory: 'Downloads' }
-    } catch (_error) {
+    } catch {
       return null
     }
   }
@@ -363,7 +365,7 @@ export class BrowserService {
       
       URL.revokeObjectURL(url)
       return { success: true, filePath: `${task.name}.txt` }
-    } catch (_error) {
+    } catch {
       return null
     }
   }
@@ -371,6 +373,7 @@ export class BrowserService {
   async generateScaffold(_path: string, _settings: any): Promise<{ scaffolds: any[]; stats: any } | null> {
     // Browser fallback: not available
     console.warn('Scaffold generation is not available in browser mode')
+    void _path; void _settings;
     return null
   }
 
@@ -391,7 +394,7 @@ export class BrowserService {
         URL.revokeObjectURL(url)
       }
       return { success: true, directory: 'Downloads' }
-    } catch (_error) {
+    } catch {
       return null
     }
   }
@@ -411,7 +414,7 @@ export class BrowserService {
       
       URL.revokeObjectURL(url)
       return { success: true, filePath: `${scaffold.name}.${scaffold.format}` }
-    } catch (_error) {
+    } catch {
       return null
     }
   }
