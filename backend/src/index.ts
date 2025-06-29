@@ -31,8 +31,8 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/filesystem', fileSystemRoutes)
-app.use('/api/tasks', taskGeneratorRoutes)
-app.use('/api/scaffolds', scaffoldGeneratorRoutes)
+app.use('/api/task-generator', taskGeneratorRoutes)
+app.use('/api/scaffold-generator', scaffoldGeneratorRoutes)
 app.use('/api/database', databaseRoutes)
 
 // Error handling middleware
