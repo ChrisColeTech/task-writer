@@ -1,0 +1,136 @@
+/* Application-Wide Settings Variants */
+.font-small {
+  --font-scale-factor: 0.85;
+}
+.font-medium {
+  --font-scale-factor: 1;
+}
+.font-large {
+  --font-scale-factor: 1.15;
+}
+
+/* Apply font scaling to all text elements */
+.font-small,
+.font-medium,
+.font-large {
+  font-size: calc(1rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-sm,
+.font-medium .text-sm,
+.font-large .text-sm {
+  font-size: calc(0.875rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-base,
+.font-medium .text-base,
+.font-large .text-base {
+  font-size: calc(1rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-lg,
+.font-medium .text-lg,
+.font-large .text-lg {
+  font-size: calc(1.125rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-xl,
+.font-medium .text-xl,
+.font-large .text-xl {
+  font-size: calc(1.25rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-2xl,
+.font-medium .text-2xl,
+.font-large .text-2xl {
+  font-size: calc(1.5rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-3xl,
+.font-medium .text-3xl,
+.font-large .text-3xl {
+  font-size: calc(1.875rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-4xl,
+.font-medium .text-4xl,
+.font-large .text-4xl {
+  font-size: calc(2.25rem * var(--font-scale-factor, 1));
+}
+
+.font-small .text-5xl,
+.font-medium .text-5xl,
+.font-large .text-5xl {
+  font-size: calc(3rem * var(--font-scale-factor, 1));
+}
+/* Icon scaling */
+.icon-small {
+  --icon-scale-factor: 0.85;
+}
+.icon-medium {
+  --icon-scale-factor: 1;
+}
+.icon-large {
+  --icon-scale-factor: 1.15;
+}
+
+/* Apply icon scaling to all SVG icons */
+.icon-small svg,
+.icon-medium svg,
+.icon-large svg {
+  width: calc(1rem * var(--icon-scale-factor, 1)) !important;
+  height: calc(1rem * var(--icon-scale-factor, 1)) !important;
+}
+
+/* Specific icon size overrides */
+.icon-small .w-4,
+.icon-medium .w-4,
+.icon-large .w-4 {
+  width: calc(1rem * var(--icon-scale-factor, 1)) !important;
+}
+
+.icon-small .h-4,
+.icon-medium .h-4,
+.icon-large .h-4 {
+  height: calc(1rem * var(--icon-scale-factor, 1)) !important;
+}
+
+.icon-small .w-5,
+.icon-medium .w-5,
+.icon-large .w-5 {
+  width: calc(1.25rem * var(--icon-scale-factor, 1)) !important;
+}
+
+.icon-small .h-5,
+.icon-medium .h-5,
+.icon-large .h-5 {
+  height: calc(1.25rem * var(--icon-scale-factor, 1)) !important;
+}
+
+.icon-small .w-6,
+.icon-medium .w-6,
+.icon-large .w-6 {
+  width: calc(1.5rem * var(--icon-scale-factor, 1)) !important;
+}
+
+.icon-small .h-6,
+.icon-medium .h-6,
+.icon-large .h-6 {
+  height: calc(1.5rem * var(--icon-scale-factor, 1)) !important;
+}
+
+/* Sidebar specific icons */
+.icon-small .sidebar-icon svg,
+.icon-medium .sidebar-icon svg,
+.icon-large .sidebar-icon svg {
+  width: calc(1rem * var(--icon-scale-factor, 1)) !important;
+  height: calc(1rem * var(--icon-scale-factor, 1)) !important;
+}
+
+/* Tab bar icons */
+.icon-small .tab-icon svg,
+.icon-medium .tab-icon svg,
+.icon-large .tab-icon svg {
+  width: calc(1rem * var(--icon-scale-factor, 1)) !important;
+  height: calc(1rem * var(--icon-scale-factor, 1)) !important;
+}

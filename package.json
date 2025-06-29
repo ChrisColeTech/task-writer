@@ -1,0 +1,71 @@
+{
+  "name": "task-writer",
+  "version": "1.0.0",
+  "description": "A desktop application that scans directory structures and generates task files and scaffold scripts for project development workflows",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev --prefix frontend/app",
+    "build": "npm run build --prefix frontend/app",
+    "preview": "npm run preview --prefix frontend/app",
+    "lint": "npm run lint --prefix frontend/app",
+    "install-deps": "npm install --prefix frontend/app",
+    "clean": "rm -rf frontend/app/dist frontend/app/node_modules",
+    "start": "npm run dev",
+    "electron:dev": "concurrently \"npm run dev --prefix frontend/app\" \"wait-on http://localhost:5173 && electron electron/main.cjs\"",
+    "electron:prod": "npm run build --prefix frontend/app && electron electron/main.cjs",
+    "electron:build": "npm run build --prefix frontend/app && electron-builder",
+    "electron:package": "npm run build --prefix frontend/app && electron-builder --publish=never",
+    "dist": "npm run electron:build",
+    "start:electron": "npm run electron:dev",
+    "start:electron:prod": "npm run electron:prod"
+  },
+  "keywords": [
+    "task-writer",
+    "directory-scanner",
+    "scaffold-generator",
+    "project-template",
+    "development-workflow"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChrisColeTech/task-writer.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "workspaces": [
+    "frontend/app"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.taskwriter.app",
+    "productName": "Task Writer",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "frontend/app/dist/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}

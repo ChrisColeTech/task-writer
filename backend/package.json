@@ -1,0 +1,59 @@
+{
+  "name": "task-writer-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Task Writer - handles file operations, directory scanning, and task generation",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --coverage --ci --watchAll=false"
+  },
+  "keywords": [
+    "task-writer",
+    "file-operations",
+    "project-analysis",
+    "code-generation"
+  ],
+  "author": "Task Writer",
+  "license": "MIT",
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.1.1",
+    "chokidar": "^3.5.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "helmet": "^7.1.0",
+    "mime-types": "^2.1.35",
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.8",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.10.0",
+    "@types/supertest": "^6.0.3",
+    "@types/uuid": "^9.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1",
+    "ts-jest": "^29.1.1",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "malformed-json",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^18.0.0"
+    // Missing comma here - invalid JSON
+  }
+  "scripts": {
+    "start": "node index.js"
+  }
+}

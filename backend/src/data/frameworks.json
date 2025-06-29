@@ -1,0 +1,1414 @@
+{
+  "packageJsonRules": {
+    "react": {
+      "type": "frontend",
+      "category": "frontend",
+      "dependencies": ["react", "react-dom"],
+      "devDependencies": ["@types/react", "@types/react-dom", "react-scripts"],
+      "confidence": 0.9
+    },
+    "vue": {
+      "type": "frontend", 
+      "category": "frontend",
+      "dependencies": ["vue"],
+      "devDependencies": ["@vue/cli", "@vitejs/plugin-vue", "vue-loader"],
+      "confidence": 0.9
+    },
+    "angular": {
+      "type": "frontend",
+      "category": "frontend", 
+      "dependencies": ["@angular/core", "@angular/common"],
+      "devDependencies": ["@angular/cli", "@angular-devkit/build-angular"],
+      "confidence": 0.95
+    },
+    "svelte": {
+      "type": "frontend",
+      "category": "frontend",
+      "dependencies": ["svelte"],
+      "devDependencies": ["@sveltejs/kit", "@sveltejs/adapter-auto"],
+      "confidence": 0.9
+    },
+    "nextjs": {
+      "type": "frontend",
+      "category": "meta-framework",
+      "dependencies": ["next", "react", "react-dom"],
+      "devDependencies": [],
+      "confidence": 0.95
+    },
+    "nuxt": {
+      "type": "frontend", 
+      "category": "meta-framework",
+      "dependencies": ["nuxt", "vue"],
+      "devDependencies": ["@nuxt/devtools"],
+      "confidence": 0.95
+    },
+    "gatsby": {
+      "type": "frontend",
+      "category": "meta-framework", 
+      "dependencies": ["gatsby", "react", "react-dom"],
+      "devDependencies": ["gatsby-cli"],
+      "confidence": 0.9
+    },
+    "remix": {
+      "type": "frontend",
+      "category": "meta-framework",
+      "dependencies": ["@remix-run/node", "@remix-run/react"],
+      "devDependencies": ["@remix-run/dev"],
+      "confidence": 0.95
+    },
+    "express": {
+      "type": "backend",
+      "category": "backend",
+      "dependencies": ["express"],
+      "devDependencies": ["@types/express"],
+      "confidence": 0.85
+    },
+    "fastify": {
+      "type": "backend",
+      "category": "backend", 
+      "dependencies": ["fastify"],
+      "devDependencies": [],
+      "confidence": 0.9
+    },
+    "nestjs": {
+      "type": "backend",
+      "category": "backend",
+      "dependencies": ["@nestjs/core", "@nestjs/common"],
+      "devDependencies": ["@nestjs/cli"],
+      "confidence": 0.95
+    },
+    "react-native": {
+      "type": "mobile",
+      "category": "mobile",
+      "dependencies": ["react-native"],
+      "devDependencies": ["@react-native/cli"],
+      "confidence": 0.95
+    },
+    "expo": {
+      "type": "mobile", 
+      "category": "mobile",
+      "dependencies": ["expo"],
+      "devDependencies": ["@expo/cli"],
+      "confidence": 0.9
+    },
+    "electron": {
+      "type": "desktop",
+      "category": "desktop",
+      "dependencies": ["electron"],
+      "devDependencies": ["electron-builder"],
+      "confidence": 0.9
+    },
+    "tauri": {
+      "type": "desktop",
+      "category": "desktop", 
+      "dependencies": ["@tauri-apps/api"],
+      "devDependencies": ["@tauri-apps/cli"],
+      "confidence": 0.95
+    },
+    "vite": {
+      "type": "build-tool",
+      "category": "build-tool",
+      "dependencies": [],
+      "devDependencies": ["vite"],
+      "confidence": 0.8
+    },
+    "webpack": {
+      "type": "build-tool",
+      "category": "build-tool", 
+      "dependencies": [],
+      "devDependencies": ["webpack", "webpack-cli"],
+      "confidence": 0.8
+    },
+    "jest": {
+      "type": "testing",
+      "category": "testing",
+      "dependencies": [],
+      "devDependencies": ["jest", "@types/jest"],
+      "confidence": 0.7
+    },
+    "vitest": {
+      "type": "testing",
+      "category": "testing",
+      "dependencies": [],
+      "devDependencies": ["vitest"],
+      "confidence": 0.8
+    }
+  },
+
+  "pythonRequirementsRules": {
+    "django": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["Django", "django"],
+      "indicators": ["manage.py", "settings.py", "urls.py"],
+      "confidence": 0.95
+    },
+    "flask": {
+      "type": "backend", 
+      "category": "web-framework",
+      "dependencies": ["Flask", "flask"],
+      "indicators": ["app.py", "main.py", "run.py"],
+      "confidence": 0.9
+    },
+    "fastapi": {
+      "type": "backend",
+      "category": "web-framework", 
+      "dependencies": ["fastapi", "FastAPI"],
+      "indicators": ["main.py", "app.py"],
+      "confidence": 0.9
+    },
+    "pyramid": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["pyramid"],
+      "indicators": ["__init__.py", "views.py"],
+      "confidence": 0.85
+    },
+    "tornado": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["tornado"],
+      "indicators": ["app.py", "server.py"],
+      "confidence": 0.85
+    },
+    "bottle": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["bottle"],
+      "indicators": ["app.py", "main.py"],
+      "confidence": 0.8
+    },
+    "streamlit": {
+      "type": "frontend",
+      "category": "data-app",
+      "dependencies": ["streamlit"],
+      "indicators": ["app.py", "streamlit_app.py"],
+      "confidence": 0.9
+    },
+    "dash": {
+      "type": "frontend", 
+      "category": "data-app",
+      "dependencies": ["dash", "plotly"],
+      "indicators": ["app.py", "dashboard.py"],
+      "confidence": 0.9
+    },
+    "jupyter": {
+      "type": "data-science",
+      "category": "notebook",
+      "dependencies": ["jupyter", "notebook", "jupyterlab"],
+      "indicators": ["*.ipynb"],
+      "confidence": 0.8
+    },
+    "numpy": {
+      "type": "data-science",
+      "category": "scientific-computing",
+      "dependencies": ["numpy"],
+      "indicators": [],
+      "confidence": 0.7
+    },
+    "pandas": {
+      "type": "data-science", 
+      "category": "data-analysis",
+      "dependencies": ["pandas"],
+      "indicators": [],
+      "confidence": 0.7
+    },
+    "scikit-learn": {
+      "type": "data-science",
+      "category": "machine-learning",
+      "dependencies": ["scikit-learn", "sklearn"],
+      "indicators": [],
+      "confidence": 0.7
+    },
+    "tensorflow": {
+      "type": "data-science",
+      "category": "machine-learning",
+      "dependencies": ["tensorflow", "tensorflow-gpu"],
+      "indicators": [],
+      "confidence": 0.8
+    },
+    "pytorch": {
+      "type": "data-science",
+      "category": "machine-learning", 
+      "dependencies": ["torch", "pytorch"],
+      "indicators": [],
+      "confidence": 0.8
+    },
+    "celery": {
+      "type": "backend",
+      "category": "task-queue",
+      "dependencies": ["celery"],
+      "indicators": ["celery.py", "tasks.py"],
+      "confidence": 0.8
+    },
+    "gunicorn": {
+      "type": "backend",
+      "category": "wsgi-server",
+      "dependencies": ["gunicorn"],
+      "indicators": ["gunicorn.conf.py"],
+      "confidence": 0.8
+    },
+    "uvicorn": {
+      "type": "backend",
+      "category": "asgi-server",
+      "dependencies": ["uvicorn"],
+      "indicators": [],
+      "confidence": 0.7
+    }
+  },
+
+  "dotnetProjectRules": {
+    "aspnet-core": {
+      "type": "backend",
+      "category": "web-framework",
+      "packageReferences": ["Microsoft.AspNetCore", "Microsoft.AspNetCore.App"],
+      "indicators": ["Program.cs", "Startup.cs", "appsettings.json"],
+      "confidence": 0.95
+    },
+    "blazor-server": {
+      "type": "frontend",
+      "category": "web-framework",
+      "packageReferences": ["Microsoft.AspNetCore.Components.Server"],
+      "indicators": ["App.razor", "_Host.cshtml", "Pages/*.razor"],
+      "confidence": 0.95
+    },
+    "blazor-wasm": {
+      "type": "frontend",
+      "category": "web-framework",
+      "packageReferences": ["Microsoft.AspNetCore.Components.WebAssembly"],
+      "indicators": ["App.razor", "wwwroot/index.html", "Program.cs"],
+      "confidence": 0.95
+    },
+    "maui": {
+      "type": "mobile",
+      "category": "cross-platform",
+      "packageReferences": ["Microsoft.Maui.Controls", "Microsoft.Maui.Essentials"],
+      "indicators": ["MauiProgram.cs", "Platforms/", "MainPage.xaml"],
+      "confidence": 0.95
+    },
+    "wpf": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "packageReferences": ["Microsoft.WindowsDesktop.App"],
+      "indicators": ["MainWindow.xaml", "App.xaml"],
+      "confidence": 0.9
+    },
+    "winui": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "packageReferences": ["Microsoft.WindowsAppSDK"],
+      "indicators": ["MainWindow.xaml", "App.xaml"],
+      "confidence": 0.9
+    },
+    "avalonia": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "packageReferences": ["Avalonia", "Avalonia.Desktop"],
+      "indicators": ["MainWindow.axaml", "App.axaml"],
+      "confidence": 0.9
+    },
+    "winforms": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "packageReferences": ["Microsoft.WindowsDesktop.App"],
+      "indicators": ["Form1.cs", "Program.cs"],
+      "confidence": 0.85
+    },
+    "entityframework": {
+      "type": "database",
+      "category": "orm",
+      "packageReferences": ["Microsoft.EntityFrameworkCore", "EntityFramework"],
+      "indicators": ["DbContext.cs", "Migrations/"],
+      "confidence": 0.9
+    },
+    "minimal-api": {
+      "type": "backend",
+      "category": "web-api",
+      "packageReferences": ["Microsoft.AspNetCore"],
+      "indicators": ["Program.cs"],
+      "confidence": 0.8
+    },
+    "web-api": {
+      "type": "backend",
+      "category": "web-api",
+      "packageReferences": ["Microsoft.AspNetCore.Mvc"],
+      "indicators": ["Controllers/", "Program.cs"],
+      "confidence": 0.9
+    },
+    "mvc": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "packageReferences": ["Microsoft.AspNetCore.Mvc"],
+      "indicators": ["Controllers/", "Views/", "Models/"],
+      "confidence": 0.9
+    },
+    "razor-pages": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "packageReferences": ["Microsoft.AspNetCore.Mvc.RazorPages"],
+      "indicators": ["Pages/", "*.cshtml"],
+      "confidence": 0.85
+    },
+    "signalr": {
+      "type": "realtime",
+      "category": "communication",
+      "packageReferences": ["Microsoft.AspNetCore.SignalR"],
+      "indicators": ["Hubs/"],
+      "confidence": 0.9
+    },
+    "grpc": {
+      "type": "backend",
+      "category": "rpc-framework",
+      "packageReferences": ["Grpc.AspNetCore", "Google.Protobuf"],
+      "indicators": ["Protos/", "Services/"],
+      "confidence": 0.9
+    },
+    "worker-service": {
+      "type": "service",
+      "category": "background-service",
+      "packageReferences": ["Microsoft.Extensions.Hosting"],
+      "indicators": ["Worker.cs", "Program.cs"],
+      "confidence": 0.85
+    },
+    "console-app": {
+      "type": "console",
+      "category": "cli",
+      "packageReferences": [],
+      "indicators": ["Program.cs"],
+      "confidence": 0.7
+    },
+    "class-library": {
+      "type": "library",
+      "category": "library",
+      "packageReferences": [],
+      "indicators": ["*.cs"],
+      "confidence": 0.6
+    },
+    "test-project": {
+      "type": "testing",
+      "category": "unit-testing",
+      "packageReferences": ["Microsoft.NET.Test.Sdk", "xunit", "NUnit", "MSTest"],
+      "indicators": ["*Test.cs", "*Tests.cs"],
+      "confidence": 0.8
+    }
+  },
+
+  "goModuleRules": {
+    "gin": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["github.com/gin-gonic/gin"],
+      "indicators": ["main.go", "gin.go"],
+      "confidence": 0.95
+    },
+    "echo": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["github.com/labstack/echo"],
+      "indicators": ["main.go", "echo.go"],
+      "confidence": 0.95
+    },
+    "fiber": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["github.com/gofiber/fiber"],
+      "indicators": ["main.go", "fiber.go"],
+      "confidence": 0.95
+    },
+    "gorilla-mux": {
+      "type": "backend",
+      "category": "http-router",
+      "dependencies": ["github.com/gorilla/mux"],
+      "indicators": ["main.go"],
+      "confidence": 0.9
+    },
+    "chi": {
+      "type": "backend",
+      "category": "http-router",
+      "dependencies": ["github.com/go-chi/chi"],
+      "indicators": ["main.go"],
+      "confidence": 0.9
+    },
+    "beego": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["github.com/beego/beego"],
+      "indicators": ["main.go", "conf/"],
+      "confidence": 0.9
+    },
+    "revel": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "dependencies": ["github.com/revel/revel"],
+      "indicators": ["app/", "conf/"],
+      "confidence": 0.95
+    },
+    "buffalo": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "dependencies": ["github.com/gobuffalo/buffalo"],
+      "indicators": ["actions/", "models/"],
+      "confidence": 0.95
+    },
+    "gorm": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["gorm.io/gorm"],
+      "indicators": ["models/"],
+      "confidence": 0.85
+    },
+    "ent": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["entgo.io/ent"],
+      "indicators": ["ent/", "schema/"],
+      "confidence": 0.9
+    },
+    "grpc": {
+      "type": "backend",
+      "category": "rpc-framework",
+      "dependencies": ["google.golang.org/grpc"],
+      "indicators": ["*.proto", "pb/"],
+      "confidence": 0.9
+    },
+    "cobra": {
+      "type": "cli",
+      "category": "command-line",
+      "dependencies": ["github.com/spf13/cobra"],
+      "indicators": ["cmd/", "main.go"],
+      "confidence": 0.9
+    },
+    "viper": {
+      "type": "configuration",
+      "category": "config-management",
+      "dependencies": ["github.com/spf13/viper"],
+      "indicators": ["config/"],
+      "confidence": 0.8
+    },
+    "testify": {
+      "type": "testing",
+      "category": "testing-framework",
+      "dependencies": ["github.com/stretchr/testify"],
+      "indicators": ["*_test.go"],
+      "confidence": 0.8
+    },
+    "ginkgo": {
+      "type": "testing",
+      "category": "bdd-testing",
+      "dependencies": ["github.com/onsi/ginkgo"],
+      "indicators": ["*_test.go", "*_suite_test.go"],
+      "confidence": 0.85
+    },
+    "kubernetes": {
+      "type": "infrastructure",
+      "category": "orchestration",
+      "dependencies": ["k8s.io/api", "k8s.io/client-go"],
+      "indicators": ["k8s/", "kubernetes/"],
+      "confidence": 0.9
+    },
+    "helm": {
+      "type": "infrastructure",
+      "category": "package-manager",
+      "dependencies": ["helm.sh/helm"],
+      "indicators": ["charts/", "helm/"],
+      "confidence": 0.9
+    },
+    "prometheus": {
+      "type": "monitoring",
+      "category": "metrics",
+      "dependencies": ["github.com/prometheus/client_golang"],
+      "indicators": ["metrics/"],
+      "confidence": 0.85
+    },
+    "redis": {
+      "type": "database",
+      "category": "cache",
+      "dependencies": ["github.com/go-redis/redis"],
+      "indicators": [],
+      "confidence": 0.8
+    },
+    "mongo": {
+      "type": "database",
+      "category": "nosql",
+      "dependencies": ["go.mongodb.org/mongo-driver"],
+      "indicators": [],
+      "confidence": 0.8
+    },
+    "kafka": {
+      "type": "messaging",
+      "category": "message-broker",
+      "dependencies": ["github.com/Shopify/sarama", "github.com/confluentinc/confluent-kafka-go"],
+      "indicators": [],
+      "confidence": 0.85
+    },
+    "nats": {
+      "type": "messaging",
+      "category": "message-broker",
+      "dependencies": ["github.com/nats-io/nats.go"],
+      "indicators": [],
+      "confidence": 0.85
+    },
+    "docker": {
+      "type": "containerization",
+      "category": "container",
+      "dependencies": ["github.com/docker/docker"],
+      "indicators": ["Dockerfile"],
+      "confidence": 0.8
+    }
+  },
+
+  "javaBuildRules": {
+    "spring-boot": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["org.springframework.boot:spring-boot-starter"],
+      "indicators": ["src/main/java/", "application.properties", "application.yml"],
+      "confidence": 0.95
+    },
+    "spring-mvc": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "dependencies": ["org.springframework:spring-webmvc"],
+      "indicators": ["src/main/webapp/", "WEB-INF/"],
+      "confidence": 0.9
+    },
+    "spring-data": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["org.springframework.data:spring-data"],
+      "indicators": ["src/main/java/", "repository/"],
+      "confidence": 0.85
+    },
+    "quarkus": {
+      "type": "backend",
+      "category": "microservice-framework",
+      "dependencies": ["io.quarkus:quarkus"],
+      "indicators": ["src/main/java/", "application.properties"],
+      "confidence": 0.95
+    },
+    "micronaut": {
+      "type": "backend",
+      "category": "microservice-framework",
+      "dependencies": ["io.micronaut:micronaut"],
+      "indicators": ["src/main/java/", "application.yml"],
+      "confidence": 0.9
+    },
+    "dropwizard": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["io.dropwizard:dropwizard"],
+      "indicators": ["src/main/java/", "config.yml"],
+      "confidence": 0.9
+    },
+    "jersey": {
+      "type": "backend",
+      "category": "rest-framework",
+      "dependencies": ["org.glassfish.jersey:jersey"],
+      "indicators": ["src/main/java/"],
+      "confidence": 0.85
+    },
+    "struts": {
+      "type": "fullstack",
+      "category": "web-framework",
+      "dependencies": ["org.apache.struts:struts"],
+      "indicators": ["src/main/webapp/", "struts.xml"],
+      "confidence": 0.85
+    },
+    "jsf": {
+      "type": "frontend",
+      "category": "web-framework",
+      "dependencies": ["javax.faces:javax.faces-api"],
+      "indicators": ["src/main/webapp/", "faces-config.xml"],
+      "confidence": 0.85
+    },
+    "hibernate": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["org.hibernate:hibernate"],
+      "indicators": ["hibernate.cfg.xml", "src/main/resources/"],
+      "confidence": 0.9
+    },
+    "jpa": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["javax.persistence:javax.persistence-api"],
+      "indicators": ["persistence.xml", "src/main/java/"],
+      "confidence": 0.85
+    },
+    "mybatis": {
+      "type": "database",
+      "category": "sql-mapper",
+      "dependencies": ["org.mybatis:mybatis"],
+      "indicators": ["mybatis-config.xml", "mapper/"],
+      "confidence": 0.85
+    },
+    "junit": {
+      "type": "testing",
+      "category": "unit-testing",
+      "dependencies": ["org.junit.jupiter:junit-jupiter", "junit:junit"],
+      "indicators": ["src/test/java/", "*Test.java"],
+      "confidence": 0.8
+    },
+    "testng": {
+      "type": "testing",
+      "category": "unit-testing",
+      "dependencies": ["org.testng:testng"],
+      "indicators": ["src/test/java/", "testng.xml"],
+      "confidence": 0.8
+    },
+    "mockito": {
+      "type": "testing",
+      "category": "mocking-framework",
+      "dependencies": ["org.mockito:mockito"],
+      "indicators": ["src/test/java/"],
+      "confidence": 0.7
+    },
+    "gradle": {
+      "type": "build-tool",
+      "category": "build-system",
+      "dependencies": [],
+      "indicators": ["build.gradle", "gradle/", "gradlew"],
+      "confidence": 0.95
+    },
+    "maven": {
+      "type": "build-tool",
+      "category": "build-system",
+      "dependencies": [],
+      "indicators": ["pom.xml", ".mvn/"],
+      "confidence": 0.95
+    },
+    "android": {
+      "type": "mobile",
+      "category": "mobile-framework",
+      "dependencies": ["com.android.application", "androidx."],
+      "indicators": ["AndroidManifest.xml", "res/", "src/main/java/"],
+      "confidence": 0.95
+    },
+    "kotlin-android": {
+      "type": "mobile",
+      "category": "mobile-framework",
+      "dependencies": ["org.jetbrains.kotlin:kotlin"],
+      "indicators": ["AndroidManifest.xml", "src/main/kotlin/"],
+      "confidence": 0.9
+    },
+    "javafx": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "dependencies": ["org.openjfx:javafx"],
+      "indicators": ["src/main/java/", "*.fxml"],
+      "confidence": 0.85
+    },
+    "swing": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "dependencies": [],
+      "indicators": ["src/main/java/", "javax.swing"],
+      "confidence": 0.7
+    }
+  },
+
+  "rustCargoRules": {
+    "actix-web": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["actix-web"],
+      "indicators": ["src/main.rs", "src/lib.rs"],
+      "confidence": 0.95
+    },
+    "rocket": {
+      "type": "backend", 
+      "category": "web-framework",
+      "dependencies": ["rocket"],
+      "indicators": ["src/main.rs", "Rocket.toml"],
+      "confidence": 0.95
+    },
+    "axum": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["axum"],
+      "indicators": ["src/main.rs", "src/lib.rs"],
+      "confidence": 0.9
+    },
+    "warp": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["warp"],
+      "indicators": ["src/main.rs"],
+      "confidence": 0.85
+    },
+    "tide": {
+      "type": "backend",
+      "category": "web-framework",
+      "dependencies": ["tide"],
+      "indicators": ["src/main.rs"],
+      "confidence": 0.85
+    },
+    "hyper": {
+      "type": "backend",
+      "category": "http-library",
+      "dependencies": ["hyper"],
+      "indicators": ["src/main.rs"],
+      "confidence": 0.8
+    },
+    "tokio": {
+      "type": "runtime",
+      "category": "async-runtime",
+      "dependencies": ["tokio"],
+      "indicators": [],
+      "confidence": 0.7
+    },
+    "async-std": {
+      "type": "runtime",
+      "category": "async-runtime",
+      "dependencies": ["async-std"],
+      "indicators": [],
+      "confidence": 0.7
+    },
+    "serde": {
+      "type": "serialization",
+      "category": "utility",
+      "dependencies": ["serde"],
+      "indicators": [],
+      "confidence": 0.6
+    },
+    "clap": {
+      "type": "cli",
+      "category": "command-line",
+      "dependencies": ["clap"],
+      "indicators": ["src/main.rs"],
+      "confidence": 0.8
+    },
+    "diesel": {
+      "type": "database",
+      "category": "orm",
+      "dependencies": ["diesel"],
+      "indicators": ["diesel.toml", "migrations"],
+      "confidence": 0.9
+    },
+    "sqlx": {
+      "type": "database",
+      "category": "database-toolkit",
+      "dependencies": ["sqlx"],
+      "indicators": [],
+      "confidence": 0.8
+    },
+    "tauri": {
+      "type": "desktop",
+      "category": "gui-framework",
+      "dependencies": ["tauri"],
+      "indicators": ["src-tauri", "tauri.conf.json"],
+      "confidence": 0.95
+    },
+    "yew": {
+      "type": "frontend",
+      "category": "wasm-framework",
+      "dependencies": ["yew"],
+      "indicators": ["index.html", "src/lib.rs"],
+      "confidence": 0.9
+    },
+    "leptos": {
+      "type": "frontend",
+      "category": "wasm-framework",
+      "dependencies": ["leptos"],
+      "indicators": ["src/lib.rs"],
+      "confidence": 0.9
+    },
+    "bevy": {
+      "type": "game-engine",
+      "category": "game-development",
+      "dependencies": ["bevy"],
+      "indicators": ["src/main.rs"],
+      "confidence": 0.9
+    }
+  },
+  
+  "configFileRules": {
+    "next.config.js": {
+      "framework": "nextjs",
+      "confidence": 0.95
+    },
+    "next.config.mjs": {
+      "framework": "nextjs", 
+      "confidence": 0.95
+    },
+    "nuxt.config.js": {
+      "framework": "nuxt",
+      "confidence": 0.95
+    },
+    "nuxt.config.ts": {
+      "framework": "nuxt",
+      "confidence": 0.95
+    },
+    "angular.json": {
+      "framework": "angular",
+      "confidence": 0.95
+    },
+    "vue.config.js": {
+      "framework": "vue",
+      "confidence": 0.9
+    },
+    "svelte.config.js": {
+      "framework": "svelte",
+      "confidence": 0.9
+    },
+    "gatsby-config.js": {
+      "framework": "gatsby", 
+      "confidence": 0.95
+    },
+    "remix.config.js": {
+      "framework": "remix",
+      "confidence": 0.95
+    },
+    "vite.config.js": {
+      "framework": "vite",
+      "confidence": 0.8
+    },
+    "vite.config.ts": {
+      "framework": "vite",
+      "confidence": 0.8
+    },
+    "webpack.config.js": {
+      "framework": "webpack",
+      "confidence": 0.8
+    },
+    "rollup.config.js": {
+      "framework": "rollup", 
+      "confidence": 0.8
+    },
+    "jest.config.js": {
+      "framework": "jest",
+      "confidence": 0.8
+    },
+    "vitest.config.js": {
+      "framework": "vitest",
+      "confidence": 0.8
+    },
+    "cypress.config.js": {
+      "framework": "cypress",
+      "confidence": 0.8
+    },
+    "playwright.config.js": {
+      "framework": "playwright",
+      "confidence": 0.8
+    },
+    "expo.json": {
+      "framework": "expo",
+      "confidence": 0.9
+    },
+    "app.json": {
+      "framework": "expo",
+      "confidence": 0.7
+    },
+    "tauri.conf.json": {
+      "framework": "tauri",
+      "confidence": 0.95
+    },
+    "requirements.txt": {
+      "framework": "python",
+      "confidence": 0.9
+    },
+    "pyproject.toml": {
+      "framework": "python",
+      "confidence": 0.95
+    },
+    "setup.py": {
+      "framework": "python",
+      "confidence": 0.85
+    },
+    "setup.cfg": {
+      "framework": "python",
+      "confidence": 0.8
+    },
+    "Pipfile": {
+      "framework": "python",
+      "confidence": 0.9
+    },
+    "environment.yml": {
+      "framework": "python-conda",
+      "confidence": 0.85
+    },
+    "manage.py": {
+      "framework": "django",
+      "confidence": 0.95
+    },
+    "wsgi.py": {
+      "framework": "django",
+      "confidence": 0.8
+    },
+    "asgi.py": {
+      "framework": "django",
+      "confidence": 0.8
+    },
+    "settings.py": {
+      "framework": "django",
+      "confidence": 0.7
+    },
+    "urls.py": {
+      "framework": "django",
+      "confidence": 0.6
+    },
+    "Cargo.toml": {
+      "framework": "rust",
+      "confidence": 0.95
+    },
+    "Cargo.lock": {
+      "framework": "rust",
+      "confidence": 0.85
+    },
+    "rust-toolchain": {
+      "framework": "rust",
+      "confidence": 0.9
+    },
+    "rust-toolchain.toml": {
+      "framework": "rust",
+      "confidence": 0.9
+    },
+    "Rocket.toml": {
+      "framework": "rocket",
+      "confidence": 0.95
+    },
+    "diesel.toml": {
+      "framework": "diesel",
+      "confidence": 0.9
+    },
+    "*.csproj": {
+      "framework": "dotnet",
+      "confidence": 0.95
+    },
+    "*.vbproj": {
+      "framework": "dotnet",
+      "confidence": 0.95
+    },
+    "*.fsproj": {
+      "framework": "dotnet",
+      "confidence": 0.95
+    },
+    "*.sln": {
+      "framework": "dotnet",
+      "confidence": 0.9
+    },
+    "global.json": {
+      "framework": "dotnet",
+      "confidence": 0.85
+    },
+    "nuget.config": {
+      "framework": "dotnet",
+      "confidence": 0.8
+    },
+    "Directory.Build.props": {
+      "framework": "dotnet",
+      "confidence": 0.8
+    },
+    "Directory.Build.targets": {
+      "framework": "dotnet",
+      "confidence": 0.8
+    },
+    "appsettings.json": {
+      "framework": "aspnet-core",
+      "confidence": 0.85
+    },
+    "appsettings.Development.json": {
+      "framework": "aspnet-core",
+      "confidence": 0.8
+    },
+    "web.config": {
+      "framework": "aspnet",
+      "confidence": 0.85
+    },
+    "launchSettings.json": {
+      "framework": "aspnet-core",
+      "confidence": 0.7
+    },
+    "go.mod": {
+      "framework": "go",
+      "confidence": 0.95
+    },
+    "go.sum": {
+      "framework": "go",
+      "confidence": 0.85
+    },
+    "go.work": {
+      "framework": "go",
+      "confidence": 0.9
+    },
+    "go.work.sum": {
+      "framework": "go",
+      "confidence": 0.8
+    },
+    ".golangci.yml": {
+      "framework": "go",
+      "confidence": 0.8
+    },
+    "Gopkg.toml": {
+      "framework": "go",
+      "confidence": 0.85
+    },
+    "Gopkg.lock": {
+      "framework": "go",
+      "confidence": 0.8
+    },
+    "pom.xml": {
+      "framework": "maven",
+      "confidence": 0.95
+    },
+    "build.gradle": {
+      "framework": "gradle",
+      "confidence": 0.95
+    },
+    "build.gradle.kts": {
+      "framework": "gradle",
+      "confidence": 0.95
+    },
+    "settings.gradle": {
+      "framework": "gradle",
+      "confidence": 0.9
+    },
+    "gradlew": {
+      "framework": "gradle",
+      "confidence": 0.85
+    },
+    "gradle.properties": {
+      "framework": "gradle",
+      "confidence": 0.8
+    },
+    "application.properties": {
+      "framework": "spring-boot",
+      "confidence": 0.85
+    },
+    "application.yml": {
+      "framework": "spring-boot",
+      "confidence": 0.85
+    },
+    "application.yaml": {
+      "framework": "spring-boot",
+      "confidence": 0.85
+    },
+    "bootstrap.properties": {
+      "framework": "spring-boot",
+      "confidence": 0.8
+    },
+    "hibernate.cfg.xml": {
+      "framework": "hibernate",
+      "confidence": 0.9
+    },
+    "persistence.xml": {
+      "framework": "jpa",
+      "confidence": 0.9
+    },
+    "web.xml": {
+      "framework": "java-web",
+      "confidence": 0.8
+    },
+    "struts.xml": {
+      "framework": "struts",
+      "confidence": 0.9
+    },
+    "faces-config.xml": {
+      "framework": "jsf",
+      "confidence": 0.9
+    },
+    "AndroidManifest.xml": {
+      "framework": "android",
+      "confidence": 0.95
+    }
+  },
+  
+  "filePatternRules": {
+    "*.jsx": {
+      "framework": "react",
+      "confidence": 0.7
+    },
+    "*.tsx": {
+      "framework": "react", 
+      "confidence": 0.7
+    },
+    "*.vue": {
+      "framework": "vue",
+      "confidence": 0.9
+    },
+    "*.svelte": {
+      "framework": "svelte",
+      "confidence": 0.9
+    },
+    "pages/*.js": {
+      "framework": "nextjs",
+      "confidence": 0.6
+    },
+    "pages/*.tsx": {
+      "framework": "nextjs",
+      "confidence": 0.7
+    },
+    "app/*.tsx": {
+      "framework": "nextjs",
+      "confidence": 0.6
+    },
+    "src/app.html": {
+      "framework": "svelte",
+      "confidence": 0.8
+    },
+    "src/main.ts": {
+      "framework": "angular",
+      "confidence": 0.5
+    },
+    "*.py": {
+      "framework": "python",
+      "confidence": 0.6
+    },
+    "app.py": {
+      "framework": "flask",
+      "confidence": 0.7
+    },
+    "main.py": {
+      "framework": "python",
+      "confidence": 0.5
+    },
+    "run.py": {
+      "framework": "flask",
+      "confidence": 0.6
+    },
+    "server.py": {
+      "framework": "python",
+      "confidence": 0.5
+    },
+    "*.ipynb": {
+      "framework": "jupyter",
+      "confidence": 0.9
+    },
+    "requirements/*.txt": {
+      "framework": "python",
+      "confidence": 0.8
+    },
+    "*.rs": {
+      "framework": "rust",
+      "confidence": 0.7
+    },
+    "src/main.rs": {
+      "framework": "rust",
+      "confidence": 0.9
+    },
+    "src/lib.rs": {
+      "framework": "rust",
+      "confidence": 0.9
+    },
+    "src/bin/*.rs": {
+      "framework": "rust",
+      "confidence": 0.8
+    },
+    "examples/*.rs": {
+      "framework": "rust",
+      "confidence": 0.7
+    },
+    "tests/*.rs": {
+      "framework": "rust",
+      "confidence": 0.7
+    },
+    "benches/*.rs": {
+      "framework": "rust",
+      "confidence": 0.7
+    },
+    "*.cs": {
+      "framework": "dotnet",
+      "confidence": 0.7
+    },
+    "*.vb": {
+      "framework": "dotnet",
+      "confidence": 0.7
+    },
+    "*.fs": {
+      "framework": "dotnet",
+      "confidence": 0.7
+    },
+    "Program.cs": {
+      "framework": "dotnet",
+      "confidence": 0.8
+    },
+    "Startup.cs": {
+      "framework": "aspnet-core",
+      "confidence": 0.9
+    },
+    "*.razor": {
+      "framework": "blazor",
+      "confidence": 0.9
+    },
+    "*.cshtml": {
+      "framework": "aspnet-core",
+      "confidence": 0.8
+    },
+    "*.xaml": {
+      "framework": "wpf",
+      "confidence": 0.8
+    },
+    "*.axaml": {
+      "framework": "avalonia",
+      "confidence": 0.9
+    },
+    "Controllers/*.cs": {
+      "framework": "aspnet-core",
+      "confidence": 0.85
+    },
+    "Views/*.cshtml": {
+      "framework": "mvc",
+      "confidence": 0.85
+    },
+    "Pages/*.razor": {
+      "framework": "blazor",
+      "confidence": 0.9
+    },
+    "Pages/*.cshtml": {
+      "framework": "razor-pages",
+      "confidence": 0.8
+    },
+    "*.go": {
+      "framework": "go",
+      "confidence": 0.7
+    },
+    "main.go": {
+      "framework": "go",
+      "confidence": 0.9
+    },
+    "*_test.go": {
+      "framework": "go",
+      "confidence": 0.8
+    },
+    "cmd/*.go": {
+      "framework": "go",
+      "confidence": 0.8
+    },
+    "pkg/*.go": {
+      "framework": "go",
+      "confidence": 0.7
+    },
+    "internal/*.go": {
+      "framework": "go",
+      "confidence": 0.7
+    },
+    "vendor/": {
+      "framework": "go",
+      "confidence": 0.6
+    },
+    "*.java": {
+      "framework": "java",
+      "confidence": 0.7
+    },
+    "*.kt": {
+      "framework": "kotlin",
+      "confidence": 0.7
+    },
+    "*.scala": {
+      "framework": "scala",
+      "confidence": 0.7
+    },
+    "src/main/java/": {
+      "framework": "java",
+      "confidence": 0.8
+    },
+    "src/test/java/": {
+      "framework": "java",
+      "confidence": 0.8
+    },
+    "src/main/kotlin/": {
+      "framework": "kotlin",
+      "confidence": 0.8
+    },
+    "src/main/scala/": {
+      "framework": "scala",
+      "confidence": 0.8
+    },
+    "src/main/resources/": {
+      "framework": "java",
+      "confidence": 0.7
+    },
+    "src/main/webapp/": {
+      "framework": "java-web",
+      "confidence": 0.8
+    },
+    "*Test.java": {
+      "framework": "junit",
+      "confidence": 0.7
+    },
+    "*Tests.java": {
+      "framework": "junit",
+      "confidence": 0.7
+    },
+    "*.fxml": {
+      "framework": "javafx",
+      "confidence": 0.8
+    }
+  },
+
+  "projectTypeRules": {
+    "frontend": {
+      "indicators": ["react", "vue", "angular", "svelte", "streamlit", "dash", "yew", "leptos", "blazor-wasm", "blazor-server"],
+      "excludes": ["express", "fastify", "nestjs", "django", "flask", "fastapi", "actix-web", "rocket", "axum", "aspnet-core", "web-api"]
+    },
+    "backend": {
+      "indicators": ["express", "fastify", "nestjs", "koa", "django", "flask", "fastapi", "pyramid", "tornado", "bottle", "actix-web", "rocket", "axum", "warp", "tide", "aspnet-core", "web-api", "minimal-api", "grpc", "gin", "echo", "fiber", "beego", "spring-boot", "quarkus", "micronaut", "dropwizard", "jersey"],
+      "excludes": ["react", "vue", "angular", "blazor"]
+    },
+    "fullstack": {
+      "indicators": ["nextjs", "nuxt", "remix", "gatsby", "mvc", "razor-pages", "revel", "buffalo", "spring-mvc", "struts"],
+      "requires": []
+    },
+    "mobile": {
+      "indicators": ["react-native", "expo", "flutter", "ionic", "maui", "android", "kotlin-android"],
+      "excludes": []
+    },
+    "desktop": {
+      "indicators": ["electron", "tauri", "wpf", "winui", "avalonia", "winforms", "javafx", "swing"],
+      "excludes": []
+    },
+    "data-science": {
+      "indicators": ["jupyter", "numpy", "pandas", "scikit-learn", "tensorflow", "pytorch"],
+      "excludes": []
+    },
+    "cli": {
+      "indicators": ["clap", "cobra"],
+      "excludes": []
+    },
+    "infrastructure": {
+      "indicators": ["kubernetes", "helm"],
+      "excludes": []
+    },
+    "messaging": {
+      "indicators": ["kafka", "nats"],
+      "excludes": []
+    },
+    "game-engine": {
+      "indicators": ["bevy"],
+      "excludes": []
+    },
+    "service": {
+      "indicators": ["worker-service"],
+      "excludes": []
+    },
+    "library": {
+      "indicators": ["class-library"],
+      "excludes": []
+    },
+    "testing": {
+      "indicators": ["test-project"],
+      "excludes": []
+    }
+  },
+
+  "buildToolMappings": {
+    "bundlers": {
+      "vite": ["vite"],
+      "webpack": ["webpack", "webpack-cli", "webpack-dev-server"],
+      "rollup": ["rollup"],
+      "parcel": ["parcel"],
+      "esbuild": ["esbuild"]
+    },
+    "transpilers": {
+      "typescript": ["typescript"],
+      "babel": ["@babel/core", "@babel/preset-env"],
+      "swc": ["@swc/core"]
+    },
+    "taskRunners": {
+      "npm": [],
+      "yarn": [],
+      "pnpm": [],
+      "bun": []
+    }
+  }
+}

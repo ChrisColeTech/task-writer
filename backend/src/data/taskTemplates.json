@@ -1,0 +1,1045 @@
+{
+  "templates": {
+    "initialization": {
+      "id": "initialization",
+      "name": "Project Initialization",
+      "description": "Sets up basic project structure with frontend, backend, and electron folders",
+      "type": "initialization",
+      "category": "project-setup",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1,
+          "defaultContent": "1.) **CONCISENESS CLAUSE** When replying use as few words as needed to explain, plan or analyze. Long winded replies waste time and tokens. No long explanations. Stick to the main points an keep it breif. Do not perform extra work or validation.\n\n2.) **WORKSPACE DIRECTIVE** Before you write any code or run any terminal commands, Verify you are in the workspace. Do not create files or folders outside of the workspace. No other files are permitted to be created other than what is in the task files. Create files only where specified: frontend, backend, electron, (or root if main package.json).\n\n3.) **COMMAND FORMATTING** Always use && to chain commands in terminal! Use tools properly when needed, especially: **read file, write to file, execute command, read multiple files, list files, new task and complete task.**\n\n4.) **READ THE TASK FILE AND THEN SUMMARIZE** Summarize and list the steps in the task file in chat after you read it (**HIGH LEVEL SUMMARY ONLY - NO CODE, NO COMMANDS**). Then follow the steps **VERBATIM** in the **EXACT** order they appear in the task file. Read rules **VERBATIM**, and follow them explicitly. For efficiency, do not explain code or make overly verbose comments. Only spend a maximum of 10 seconds thinking.\n\n5.) **IMPORTANT** do not stop to resolve build errors, missing files or missing imports.\n\n6.) **FULL PATHS ONLY** Always confirm you are in the correct working directory first! When running terminal commands always use full paths for folders (e.g. cd C:/Projects/foo) to avoid errors.\n\n7.) **READ FIRST DIRECTIVE** Read folders and files first before you write! File content is changed by the linter after you save. So before writing to a file you must read it first to get its latest content!\n\n8.) Complete all work in the task file. Do not create or modify anything outside of these files.\n\n9.) **TOOL USAGE CLAUSE** Always use the appropriate tools provided by the system for file operations. Specifically:\n\nUse read_file to read files instead of command line utilities like type\nUse write_to_file or insert_content to modify files\nUse execute_command for running terminal commands Failing to use these tools properly may result in incomplete or incorrect task execution."
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2,
+          "variables": ["taskNumber", "projectName", "framework"]
+        },
+        {
+          "type": "commands",
+          "title": "Commands",
+          "required": true,
+          "order": 3,
+          "variables": ["platform", "commands"]
+        }
+      ],
+      "variables": [
+        {
+          "name": "taskNumber",
+          "type": "string",
+          "description": "Task version number (e.g., 1.0, 2.1)",
+          "required": true,
+          "defaultValue": "1.0"
+        },
+        {
+          "name": "projectName",
+          "type": "string",
+          "description": "Name of the project being initialized",
+          "required": true
+        },
+        {
+          "name": "framework",
+          "type": "select",
+          "description": "Primary framework for the project",
+          "required": false,
+          "options": ["React", "Vue", "Angular", ".NET", "Express", "Mixed"]
+        },
+        {
+          "name": "platform",
+          "type": "select",
+          "description": "Target platform",
+          "required": true,
+          "defaultValue": "cross-platform",
+          "options": ["Windows", "macOS", "Linux", "cross-platform"]
+        }
+      ]
+    },
+    "frontend-react": {
+      "id": "frontend-react",
+      "name": "React Frontend Setup",
+      "description": "Creates a React frontend with TypeScript and Vite",
+      "type": "frontend-setup",
+      "category": "project-setup",
+      "framework": "React",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Initial Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Configuration Files",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Bootstrap Code",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Build and Validation",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "packageManager",
+          "type": "select",
+          "description": "Package manager to use",
+          "required": true,
+          "defaultValue": "npm",
+          "options": ["npm", "yarn", "pnpm", "bun"]
+        },
+        {
+          "name": "styling",
+          "type": "select",
+          "description": "Styling solution",
+          "required": true,
+          "defaultValue": "tailwind",
+          "options": ["tailwind", "scss", "styled-components", "emotion"]
+        },
+        {
+          "name": "routing",
+          "type": "boolean",
+          "description": "Include React Router",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-dotnet": {
+      "id": "backend-dotnet",
+      "name": ".NET Backend Setup",
+      "description": "Creates a .NET 8 Web API backend with Entity Framework",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": ".NET",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Scaffold and Structure",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Project Configuration",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "commands",
+          "title": "Package Restore and Build",
+          "required": true,
+          "order": 5
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database provider",
+          "required": true,
+          "defaultValue": "sqlite",
+          "options": ["sqlite", "sqlserver", "postgresql", "mysql"]
+        },
+        {
+          "name": "authentication",
+          "type": "boolean",
+          "description": "Include JWT authentication",
+          "required": false,
+          "defaultValue": false
+        },
+        {
+          "name": "signalr",
+          "type": "boolean",
+          "description": "Include SignalR for real-time communication",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-express": {
+      "id": "backend-express",
+      "name": "Express Backend Setup",
+      "description": "Creates an Express.js backend with TypeScript",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Express",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Configuration Files",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Core Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Install and Build",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database solution",
+          "required": true,
+          "defaultValue": "mongodb",
+          "options": ["mongodb", "postgresql", "mysql", "sqlite"]
+        },
+        {
+          "name": "authentication",
+          "type": "boolean",
+          "description": "Include JWT authentication middleware",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "validation",
+          "type": "boolean",
+          "description": "Include request validation",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "component-creation": {
+      "id": "component-creation",
+      "name": "Component Creation",
+      "description": "Creates reusable components with proper structure",
+      "type": "component-creation",
+      "category": "development",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "overview",
+          "title": "Component Overview",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "files",
+          "title": "File Structure",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "validation",
+          "title": "Testing and Validation",
+          "required": false,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "componentName",
+          "type": "string",
+          "description": "Name of the component to create",
+          "required": true
+        },
+        {
+          "name": "componentType",
+          "type": "select",
+          "description": "Type of component",
+          "required": true,
+          "options": ["functional", "class", "hook", "utility"]
+        },
+        {
+          "name": "props",
+          "type": "array",
+          "description": "Component props/parameters",
+          "required": false
+        }
+      ]
+    },
+    "backend-django": {
+      "id": "backend-django",
+      "name": "Django Backend Setup",
+      "description": "Creates a Django backend with REST API capabilities",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Django",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Django Configuration",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Models and Views",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Migration and Setup",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database backend",
+          "required": true,
+          "defaultValue": "sqlite",
+          "options": ["sqlite", "postgresql", "mysql", "mariadb"]
+        },
+        {
+          "name": "restframework",
+          "type": "boolean",
+          "description": "Include Django REST Framework",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "cors",
+          "type": "boolean",
+          "description": "Include CORS headers support",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-flask": {
+      "id": "backend-flask",
+      "name": "Flask Backend Setup",
+      "description": "Creates a Flask backend with REST API",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Flask",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Flask Application Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Configuration Files",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Application Code",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Install and Run",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database solution",
+          "required": true,
+          "defaultValue": "sqlite",
+          "options": ["sqlite", "postgresql", "mysql", "mongodb"]
+        },
+        {
+          "name": "authentication",
+          "type": "boolean",
+          "description": "Include JWT authentication",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "blueprint",
+          "type": "boolean",
+          "description": "Use Flask Blueprints",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-fastapi": {
+      "id": "backend-fastapi",
+      "name": "FastAPI Backend Setup",
+      "description": "Creates a FastAPI backend with automatic OpenAPI docs",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "FastAPI",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "FastAPI Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Configuration and Dependencies",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "API Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Install and Start",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database ORM",
+          "required": true,
+          "defaultValue": "sqlalchemy",
+          "options": ["sqlalchemy", "tortoise", "databases", "mongodb"]
+        },
+        {
+          "name": "authentication",
+          "type": "boolean",
+          "description": "Include OAuth2 authentication",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "background_tasks",
+          "type": "boolean",
+          "description": "Include background task support",
+          "required": false,
+          "defaultValue": false
+        }
+      ]
+    },
+    "data-science-jupyter": {
+      "id": "data-science-jupyter",
+      "name": "Jupyter Data Science Setup",
+      "description": "Creates a Jupyter notebook environment for data science",
+      "type": "data-science-setup",
+      "category": "project-setup",
+      "framework": "Jupyter",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Environment Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Requirements and Config",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "notebooks",
+          "title": "Starter Notebooks",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Launch Environment",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "ml_library",
+          "type": "select",
+          "description": "Machine learning library",
+          "required": true,
+          "defaultValue": "scikit-learn",
+          "options": ["scikit-learn", "tensorflow", "pytorch", "xgboost"]
+        },
+        {
+          "name": "visualization",
+          "type": "boolean",
+          "description": "Include visualization libraries",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "data_sources",
+          "type": "boolean",
+          "description": "Include data source connectors",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-rust-actix": {
+      "id": "backend-rust-actix",
+      "name": "Rust Actix-web Backend Setup",
+      "description": "Creates a Rust backend with Actix-web framework",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Actix-web",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Rust Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Cargo Configuration",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Actix-web Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Build and Run",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database ORM",
+          "required": true,
+          "defaultValue": "diesel",
+          "options": ["diesel", "sqlx", "sea-orm", "none"]
+        },
+        {
+          "name": "async_runtime",
+          "type": "select",
+          "description": "Async runtime",
+          "required": true,
+          "defaultValue": "tokio",
+          "options": ["tokio", "async-std"]
+        },
+        {
+          "name": "authentication",
+          "type": "boolean",
+          "description": "Include JWT authentication",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-go-gin": {
+      "id": "backend-go-gin",
+      "name": "Go Gin Backend Setup",
+      "description": "Creates a Go backend with Gin web framework",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Gin",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Go Module Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Project Structure",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Gin API Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Build and Test",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database solution",
+          "required": true,
+          "defaultValue": "gorm",
+          "options": ["gorm", "ent", "sqlx", "mongo"]
+        },
+        {
+          "name": "middleware",
+          "type": "boolean",
+          "description": "Include common middleware (CORS, logging)",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "testing",
+          "type": "boolean",
+          "description": "Include test setup with Testify",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "backend-java-spring": {
+      "id": "backend-java-spring",
+      "name": "Java Spring Boot Backend Setup",
+      "description": "Creates a Java backend with Spring Boot",
+      "type": "backend-setup",
+      "category": "project-setup",
+      "framework": "Spring Boot",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Spring Boot Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Application Configuration",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "REST API Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Build and Deploy",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "build_tool",
+          "type": "select",
+          "description": "Build tool",
+          "required": true,
+          "defaultValue": "maven",
+          "options": ["maven", "gradle"]
+        },
+        {
+          "name": "database",
+          "type": "select",
+          "description": "Database integration",
+          "required": true,
+          "defaultValue": "jpa",
+          "options": ["jpa", "mybatis", "mongodb", "none"]
+        },
+        {
+          "name": "security",
+          "type": "boolean",
+          "description": "Include Spring Security",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "mobile-rust-tauri": {
+      "id": "mobile-rust-tauri",
+      "name": "Rust Tauri Desktop App Setup",
+      "description": "Creates a cross-platform desktop app with Tauri",
+      "type": "desktop-setup",
+      "category": "project-setup",
+      "framework": "Tauri",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Tauri Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Tauri Configuration",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Frontend and Backend Code",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Development and Build",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "frontend",
+          "type": "select",
+          "description": "Frontend framework",
+          "required": true,
+          "defaultValue": "vanilla",
+          "options": ["vanilla", "react", "vue", "svelte"]
+        },
+        {
+          "name": "bundler",
+          "type": "select",
+          "description": "Frontend bundler",
+          "required": true,
+          "defaultValue": "vite",
+          "options": ["vite", "webpack", "rollup"]
+        },
+        {
+          "name": "apis",
+          "type": "boolean",
+          "description": "Include Tauri APIs (filesystem, system)",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "cli-go-cobra": {
+      "id": "cli-go-cobra",
+      "name": "Go CLI Tool with Cobra",
+      "description": "Creates a command-line tool using Go and Cobra",
+      "type": "cli-setup",
+      "category": "project-setup",
+      "framework": "Cobra",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "CLI Project Setup",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Command Structure",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "CLI Implementation",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Build and Install",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "config_format",
+          "type": "select",
+          "description": "Configuration format",
+          "required": true,
+          "defaultValue": "yaml",
+          "options": ["yaml", "json", "toml", "none"]
+        },
+        {
+          "name": "subcommands",
+          "type": "boolean",
+          "description": "Include subcommands structure",
+          "required": false,
+          "defaultValue": true
+        },
+        {
+          "name": "completion",
+          "type": "boolean",
+          "description": "Generate shell completion",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    "data-science-rust": {
+      "id": "data-science-rust",
+      "name": "Rust Data Science Setup",
+      "description": "Creates a Rust project for data analysis and machine learning",
+      "type": "data-science-setup",
+      "category": "project-setup",
+      "framework": "Rust",
+      "sections": [
+        {
+          "type": "rules",
+          "title": "Rules",
+          "required": true,
+          "order": 1
+        },
+        {
+          "type": "title",
+          "title": "Task Title",
+          "required": true,
+          "order": 2
+        },
+        {
+          "type": "steps",
+          "title": "Data Science Environment",
+          "required": true,
+          "order": 3
+        },
+        {
+          "type": "configuration",
+          "title": "Dependencies and Tools",
+          "required": true,
+          "order": 4
+        },
+        {
+          "type": "code-blocks",
+          "title": "Data Analysis Code",
+          "required": true,
+          "order": 5
+        },
+        {
+          "type": "commands",
+          "title": "Run and Benchmark",
+          "required": true,
+          "order": 6
+        }
+      ],
+      "variables": [
+        {
+          "name": "ml_library",
+          "type": "select",
+          "description": "Machine learning crate",
+          "required": true,
+          "defaultValue": "candle",
+          "options": ["candle", "smartcore", "linfa", "tch"]
+        },
+        {
+          "name": "data_format",
+          "type": "select",
+          "description": "Data format support",
+          "required": true,
+          "defaultValue": "csv",
+          "options": ["csv", "json", "parquet", "arrow"]
+        },
+        {
+          "name": "visualization",
+          "type": "boolean",
+          "description": "Include plotting capabilities",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    }
+  },
+  "rulesSections": {
+    "standard": {
+      "frontend": "1.) **CONCISENESS CLAUSE** When replying use as few words as needed to explain, plan or analyze. Long winded replies waste time and tokens. No long explanations. Stick to the main points an keep it breif. Do not perform extra work or validation.\n\n2.) **WORKSPACE DIRECTIVE** Before you write any code or run any terminal commands, Verify you are in the workspace. Do not create files or folders outside of the workspace. No other files are permitted to be created other than what is in the task files. Create files only where specified: frontend, backend, electron, (or root if main package.json).\n\n3.) **COMMAND FORMATTING** Always use && to chain commands in terminal! Use tools properly when needed, especially: **read file, write to file, execute command, read multiple files, list files, new task and complete task.**\n\n4.) **READ THE TASK FILE AND THEN SUMMARIZE** Summarize and list the steps in the task file in chat after you read it (**HIGH LEVEL SUMMARY ONLY - NO CODE, NO COMMANDS**). Then follow the steps **VERBATIM** in the **EXACT** order they appear in the task file. Read rules **VERBATIM**, and follow them explicitly. For efficiency, do not explain code or make overly verbose comments. Only spend a maximum of 10 seconds thinking.\n\n5.) **IMPORTANT** you should stop to resolve ALL build errors. you cannot complete task if the build does not pass.\n\n6.) **FULL PATHS ONLY** Always confirm you are in the correct working directory first! When running terminal commands always use full paths for folders (e.g. cd C:/Projects/foo) to avoid errors.\n\n7.) **READ FIRST DIRECTIVE** Read folders and files first before you write! File content is changed by the linter after you save. So before writing to a file you must read it first to get its latest content!\n\n8.) Complete all work in the task file. Do not create or modify anything outside of these files.\n\n9.) **TOOL USAGE CLAUSE** Always use the appropriate tools provided by the system for file operations. Specifically:\n\nUse read_file to read files instead of command line utilities like type\nUse write_to_file or insert_content to modify files\nUse execute_command for running terminal commands Failing to use these tools properly may result in incomplete or incorrect task execution.\n\n10.) **FINAL CHECKLIST** Always verify location before executing terminal commands. Use Full Paths: Always use full paths for directories when executing terminal commands. Resolve Terminal errors and syntax errors, ignore missing imports and do not create \"placeholder\" files unless instructed to do so. Do not create files or folders outside the workspace. **Only create files specified.** Only fix syntax errors and do not run the build to verify until the final task and all components have been fully populated.",
+      "backend": "1.) **CONCISENESS CLAUSE** When replying use as few words as needed to explain, plan or analyze. Long winded replies waste time and tokens. No long explanations. Stick to the main points an keep it breif. Do not perform extra work or validation.\n\n2.) **WORKSPACE DIRECTIVE** Before you write any code or run any terminal commands, Verify you are in the workspace. Do not create files or folders outside of the workspace. No other files are permitted to be created other than what is in the task files. Create files only where specified: frontend, backend, electron, (or root if main package.json).\n\n3.) **COMMAND FORMATTING** Always use && to chain commands in terminal! Use tools properly when needed, especially: **read file, write to file, execute command, read multiple files, list files, new task and complete task.**\n\n4.) **READ THE TASK FILE AND THEN SUMMARIZE** Summarize and list the steps in the task file in chat after you read it (**HIGH LEVEL SUMMARY ONLY - NO CODE, NO COMMANDS**). Then follow the steps **VERBATIM** in the **EXACT** order they appear in the task file. Read rules **VERBATIM**, and follow them explicitly. For efficiency, do not explain code or make overly verbose comments. Only spend a maximum of 10 seconds thinking.\n\n5.) **IMPORTANT** do not stop to resolve build errors, missing files or missing imports.\n\n6.) **FULL PATHS ONLY** Always confirm you are in the correct working directory first! When running terminal commands always use full paths for folders (e.g. cd C:/Projects/foo) to avoid errors.\n\n7.) **READ FIRST DIRECTIVE** Read folders and files first before you write! File content is changed by the linter after you save. So before writing to a file you must read it first to get its latest content!\n\n8.) Complete all work in the task file. Do not create or modify anything outside of these files.\n\n9.) **TOOL USAGE CLAUSE** Always use the appropriate tools provided by the system for file operations. Specifically:\n\nUse read_file to read files instead of command line utilities like type\nUse write_to_file or insert_content to modify files\nUse execute_command for running terminal commands Failing to use these tools properly may result in incomplete or incorrect task execution.\n\n10.) **FINAL CHECKLIST** Always verify location before executing terminal commands. Use Full Paths: Always use full paths for directories when executing terminal commands. Resolve Terminal errors and syntax errors, ignore missing imports and do not create \"placeholder\" files unless instructed to do so. Do not create files or folders outside the workspace. **Only create files specified.** Only fix syntax errors and do not run the build to verify until the final task and all components have been fully populated."
+    }
+  }
+}

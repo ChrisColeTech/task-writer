@@ -1,0 +1,588 @@
+{
+  "templates": {
+    "batch": {
+      "id": "batch",
+      "name": "Windows Batch",
+      "platform": "windows",
+      "format": "batch",
+      "header": "@echo off\nsetlocal EnableDelayedExpansion\n\nREM {{projectName}} Setup Script\nREM Generated on {{date}}\nREM Platform: Windows\n\necho Starting {{projectName}} setup...\n",
+      "footer": "\necho.\necho {{projectName}} setup completed successfully!\necho Press any key to exit...\npause >nul\n",
+      "commandSeparator": " && ",
+      "commentPrefix": "REM ",
+      "variablePrefix": "!",
+      "conditionalSyntax": {
+        "ifStatement": "if {{condition}} (",
+        "elseStatement": ") else (",
+        "endStatement": ")",
+        "existsCheck": "exist \"{{path}}\"",
+        "notExistsCheck": "not exist \"{{path}}\""
+      },
+      "errorHandling": {
+        "exitOnError": "if !errorlevel! neq 0 (echo Error occurred & exit /b 1)",
+        "continueOnError": "if !errorlevel! neq 0 echo Warning: Command failed but continuing...",
+        "errorCapture": "2>nul",
+        "errorOutput": "2>&1"
+      }
+    },
+    "powershell": {
+      "id": "powershell",
+      "name": "PowerShell",
+      "platform": "windows",
+      "format": "powershell",
+      "header": "# {{projectName}} Setup Script\n# Generated on {{date}}\n# Platform: Windows (PowerShell)\n\n$ErrorActionPreference = \"Stop\"\n\nWrite-Host \"Starting {{projectName}} setup...\" -ForegroundColor Green\n",
+      "footer": "\nWrite-Host \"\" \nWrite-Host \"{{projectName}} setup completed successfully!\" -ForegroundColor Green\nRead-Host \"Press Enter to exit\"\n",
+      "commandSeparator": "; ",
+      "commentPrefix": "# ",
+      "variablePrefix": "$",
+      "conditionalSyntax": {
+        "ifStatement": "if ({{condition}}) {",
+        "elseStatement": "} else {",
+        "endStatement": "}",
+        "existsCheck": "Test-Path \"{{path}}\"",
+        "notExistsCheck": "!(Test-Path \"{{path}}\")"
+      },
+      "errorHandling": {
+        "exitOnError": "if ($LASTEXITCODE -ne 0) { Write-Error \"Command failed\"; exit 1 }",
+        "continueOnError": "if ($LASTEXITCODE -ne 0) { Write-Warning \"Command failed but continuing...\" }",
+        "errorCapture": "2>$null",
+        "errorOutput": "2>&1"
+      }
+    },
+    "bash": {
+      "id": "bash",
+      "name": "Bash Shell",
+      "platform": "linux",
+      "format": "bash",
+      "header": "#!/bin/bash\n\n# {{projectName}} Setup Script\n# Generated on {{date}}\n# Platform: Linux/macOS\n\nset -e  # Exit on any error\n\necho \"Starting {{projectName}} setup...\"\n",
+      "footer": "\necho \"\"\necho \"{{projectName}} setup completed successfully!\"\nread -p \"Press Enter to exit...\" \n",
+      "commandSeparator": " && ",
+      "commentPrefix": "# ",
+      "variablePrefix": "$",
+      "conditionalSyntax": {
+        "ifStatement": "if {{condition}}; then",
+        "elseStatement": "else",
+        "endStatement": "fi",
+        "existsCheck": "[ -e \"{{path}}\" ]",
+        "notExistsCheck": "[ ! -e \"{{path}}\" ]"
+      },
+      "errorHandling": {
+        "exitOnError": "if [ $? -ne 0 ]; then echo \"Error occurred\"; exit 1; fi",
+        "continueOnError": "if [ $? -ne 0 ]; then echo \"Warning: Command failed but continuing...\"; fi",
+        "errorCapture": "2>/dev/null",
+        "errorOutput": "2>&1"
+      }
+    },
+    "zsh": {
+      "id": "zsh",
+      "name": "Z Shell",
+      "platform": "macos",
+      "format": "zsh",
+      "header": "#!/bin/zsh\n\n# {{projectName}} Setup Script\n# Generated on {{date}}\n# Platform: macOS (Z Shell)\n\nset -e  # Exit on any error\n\nprint \"Starting {{projectName}} setup...\"\n",
+      "footer": "\nprint \"\"\nprint \"{{projectName}} setup completed successfully!\"\nread \"?Press Enter to exit...\" \n",
+      "commandSeparator": " && ",
+      "commentPrefix": "# ",
+      "variablePrefix": "$",
+      "conditionalSyntax": {
+        "ifStatement": "if {{condition}}; then",
+        "elseStatement": "else",
+        "endStatement": "fi",
+        "existsCheck": "[ -e \"{{path}}\" ]",
+        "notExistsCheck": "[ ! -e \"{{path}}\" ]"
+      },
+      "errorHandling": {
+        "exitOnError": "if [ $? -ne 0 ]; then print \"Error occurred\"; exit 1; fi",
+        "continueOnError": "if [ $? -ne 0 ]; then print \"Warning: Command failed but continuing...\"; fi",
+        "errorCapture": "2>/dev/null",
+        "errorOutput": "2>&1"
+      }
+    },
+    "python": {
+      "id": "python",
+      "name": "Python Script",
+      "platform": "cross-platform",
+      "format": "python",
+      "header": "#!/usr/bin/env python3\n\"\"\"\n{{projectName}} Setup Script\nGenerated on {{date}}\nPlatform: Cross-platform (Python)\n\"\"\"\n\nimport os\nimport sys\nimport subprocess\nimport platform\n\ndef run_command(cmd, shell=True, check=True):\n    \"\"\"Run a command with error handling\"\"\"\n    try:\n        result = subprocess.run(cmd, shell=shell, check=check, capture_output=True, text=True)\n        return result\n    except subprocess.CalledProcessError as e:\n        print(f\"Error running command: {cmd}\")\n        print(f\"Error: {e.stderr}\")\n        if check:\n            sys.exit(1)\n        return e\n\nprint(\"Starting {{projectName}} setup...\")\n",
+      "footer": "\nprint(\"\")\nprint(\"{{projectName}} setup completed successfully!\")\ninput(\"Press Enter to exit...\")\n",
+      "commandSeparator": "\\n",
+      "commentPrefix": "# ",
+      "variablePrefix": "",
+      "conditionalSyntax": {
+        "ifStatement": "if {{condition}}:",
+        "elseStatement": "else:",
+        "endStatement": "",
+        "existsCheck": "os.path.exists(\"{{path}}\")",
+        "notExistsCheck": "not os.path.exists(\"{{path}}\")"
+      },
+      "errorHandling": {
+        "exitOnError": "run_command(\"{{command}}\", check=True)",
+        "continueOnError": "run_command(\"{{command}}\", check=False)",
+        "errorCapture": "capture_output=True",
+        "errorOutput": "stderr=subprocess.STDOUT"
+      }
+    },
+    "node": {
+      "id": "node",
+      "name": "Node.js Script",
+      "platform": "cross-platform",
+      "format": "node",
+      "header": "#!/usr/bin/env node\n\n/**\n * {{projectName}} Setup Script\n * Generated on {{date}}\n * Platform: Cross-platform (Node.js)\n */\n\nconst { execSync } = require('child_process');\nconst fs = require('fs');\nconst path = require('path');\nconst readline = require('readline');\n\nfunction runCommand(cmd, options = {}) {\n  try {\n    const result = execSync(cmd, { stdio: 'inherit', ...options });\n    return result;\n  } catch (error) {\n    console.error(`Error running command: ${cmd}`);\n    console.error(error.message);\n    if (options.exitOnError !== false) {\n      process.exit(1);\n    }\n  }\n}\n\nconsole.log('Starting {{projectName}} setup...');\n",
+      "footer": "\nconsole.log('');\nconsole.log('{{projectName}} setup completed successfully!');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\nrl.question('Press Enter to exit...', () => rl.close());\n",
+      "commandSeparator": "\\n",
+      "commentPrefix": "// ",
+      "variablePrefix": "",
+      "conditionalSyntax": {
+        "ifStatement": "if ({{condition}}) {",
+        "elseStatement": "} else {",
+        "endStatement": "}",
+        "existsCheck": "fs.existsSync('{{path}}')",
+        "notExistsCheck": "!fs.existsSync('{{path}}')"
+      },
+      "errorHandling": {
+        "exitOnError": "runCommand('{{command}}', { exitOnError: true })",
+        "continueOnError": "runCommand('{{command}}', { exitOnError: false })",
+        "errorCapture": "{ stdio: 'pipe' }",
+        "errorOutput": "{ stdio: 'inherit' }"
+      }
+    },
+    "docker": {
+      "id": "docker",
+      "name": "Dockerfile",
+      "platform": "cross-platform",
+      "format": "docker",
+      "header": "# {{projectName}} Dockerfile\n# Generated on {{date}}\n# Platform: Cross-platform (Docker)\n\nFROM {{baseImage}}\n\n# Set working directory\nWORKDIR /app\n\n# Set environment variables\nENV NODE_ENV=production\n",
+      "footer": "\n# Expose port\nEXPOSE {{port}}\n\n# Start the application\nCMD [\"{{startCommand}}\"]\n",
+      "commandSeparator": " && ",
+      "commentPrefix": "# ",
+      "variablePrefix": "$",
+      "conditionalSyntax": {
+        "ifStatement": "RUN if {{condition}}; then \\",
+        "elseStatement": "else \\",
+        "endStatement": "fi",
+        "existsCheck": "[ -f \"{{path}}\" ]",
+        "notExistsCheck": "[ ! -f \"{{path}}\" ]"
+      },
+      "errorHandling": {
+        "exitOnError": "RUN {{command}} || exit 1",
+        "continueOnError": "RUN {{command}} || true",
+        "errorCapture": "> /dev/null 2>&1",
+        "errorOutput": "2>&1"
+      }
+    },
+    "make": {
+      "id": "make",
+      "name": "Makefile",
+      "platform": "linux",
+      "format": "make",
+      "header": "# {{projectName}} Makefile\n# Generated on {{date}}\n# Platform: Linux/macOS\n\n.PHONY: all setup clean install build test\n\n# Default target\nall: setup\n\n# Project setup\nsetup:\n\t@echo \"Starting {{projectName}} setup...\"\n",
+      "footer": "\n\t@echo \"\"\n\t@echo \"{{projectName}} setup completed successfully!\"\n\n# Clean up\nclean:\n\t@echo \"Cleaning up...\"\n\t@rm -rf node_modules dist build\n\n# Help\nhelp:\n\t@echo \"Available targets:\"\n\t@echo \"  setup  - Set up the project\"\n\t@echo \"  clean  - Clean up build files\"\n\t@echo \"  help   - Show this help\"\n",
+      "commandSeparator": " && ",
+      "commentPrefix": "# ",
+      "variablePrefix": "$",
+      "conditionalSyntax": {
+        "ifStatement": "\tif {{condition}}; then \\",
+        "elseStatement": "\telse \\",
+        "endStatement": "\tfi",
+        "existsCheck": "[ -f \"{{path}}\" ]",
+        "notExistsCheck": "[ ! -f \"{{path}}\" ]"
+      },
+      "errorHandling": {
+        "exitOnError": "\t{{command}} || exit 1",
+        "continueOnError": "\t{{command}} || true",
+        "errorCapture": "> /dev/null 2>&1",
+        "errorOutput": "2>&1"
+      }
+    }
+  },
+  "commandMappings": {
+    "createDirectory": {
+      "generic": "mkdir -p {{path}}",
+      "windows": "if not exist \"{{path}}\" mkdir \"{{path}}\"",
+      "macos": "mkdir -p \"{{path}}\"",
+      "linux": "mkdir -p \"{{path}}\"",
+      "description": "Create directory if it doesn't exist",
+      "category": "directory"
+    },
+    "removeDirectory": {
+      "generic": "rm -rf {{path}}",
+      "windows": "if exist \"{{path}}\" rmdir /s /q \"{{path}}\"",
+      "macos": "rm -rf \"{{path}}\"",
+      "linux": "rm -rf \"{{path}}\"",
+      "description": "Remove directory and all contents",
+      "category": "directory"
+    },
+    "copyFile": {
+      "generic": "cp {{source}} {{dest}}",
+      "windows": "copy \"{{source}}\" \"{{dest}}\"",
+      "macos": "cp \"{{source}}\" \"{{dest}}\"",
+      "linux": "cp \"{{source}}\" \"{{dest}}\"",
+      "description": "Copy file from source to destination",
+      "category": "file"
+    },
+    "installNpmPackages": {
+      "generic": "npm install",
+      "windows": "npm install",
+      "macos": "npm install",
+      "linux": "npm install",
+      "description": "Install npm packages",
+      "category": "package"
+    },
+    "buildProject": {
+      "generic": "npm run build",
+      "windows": "npm run build",
+      "macos": "npm run build",
+      "linux": "npm run build",
+      "description": "Build the project",
+      "category": "build"
+    },
+    "runTests": {
+      "generic": "npm test",
+      "windows": "npm test",
+      "macos": "npm test",
+      "linux": "npm test",
+      "description": "Run project tests",
+      "category": "test"
+    },
+    "startServer": {
+      "generic": "npm start",
+      "windows": "npm start",
+      "macos": "npm start",
+      "linux": "npm start",
+      "description": "Start the development server",
+      "category": "server"
+    },
+    "initGit": {
+      "generic": "git init",
+      "windows": "git init",
+      "macos": "git init",
+      "linux": "git init",
+      "description": "Initialize Git repository",
+      "category": "git"
+    },
+    "dockerBuild": {
+      "generic": "docker build -t {{imageName}} .",
+      "windows": "docker build -t {{imageName}} .",
+      "macos": "docker build -t {{imageName}} .",
+      "linux": "docker build -t {{imageName}} .",
+      "description": "Build Docker image",
+      "category": "docker"
+    },
+    "dockerRun": {
+      "generic": "docker run -p {{port}}:{{port}} {{imageName}}",
+      "windows": "docker run -p {{port}}:{{port}} {{imageName}}",
+      "macos": "docker run -p {{port}}:{{port}} {{imageName}}",
+      "linux": "docker run -p {{port}}:{{port}} {{imageName}}",
+      "description": "Run Docker container",
+      "category": "docker"
+    }
+  },
+  "frameworkCommands": {
+    "react": {
+      "create": "npm create vite@latest {{projectName}} -- --template react-ts",
+      "install": "npm install",
+      "build": "npm run build",
+      "start": "npm run dev",
+      "test": "npm test"
+    },
+    "vue": {
+      "create": "npm create vue@latest {{projectName}}",
+      "install": "npm install",
+      "build": "npm run build",
+      "start": "npm run dev",
+      "test": "npm run test:unit"
+    },
+    "angular": {
+      "create": "ng new {{projectName}}",
+      "install": "npm install",
+      "build": "ng build",
+      "start": "ng serve",
+      "test": "ng test"
+    },
+    "nextjs": {
+      "create": "npx create-next-app@latest {{projectName}} --typescript",
+      "install": "npm install",
+      "build": "npm run build",
+      "start": "npm run dev",
+      "test": "npm test"
+    },
+    "express": {
+      "create": "npm init -y && npm install express",
+      "install": "npm install",
+      "build": "npm run build",
+      "start": "npm start",
+      "test": "npm test"
+    },
+    "dotnet": {
+      "create": "dotnet new webapi -f net8.0 --no-https --output .",
+      "install": "dotnet restore",
+      "build": "dotnet build",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "aspnet-core": {
+      "create": "dotnet new webapi -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "blazor-server": {
+      "create": "dotnet new blazorserver -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "blazor-wasm": {
+      "create": "dotnet new blazorwasm -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "maui": {
+      "create": "dotnet new maui -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "wpf": {
+      "create": "dotnet new wpf -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "winui": {
+      "create": "dotnet new winui3 -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "mvc": {
+      "create": "dotnet new mvc -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "razor-pages": {
+      "create": "dotnet new razor -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "minimal-api": {
+      "create": "dotnet new web -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "worker-service": {
+      "create": "dotnet new worker -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "console-app": {
+      "create": "dotnet new console -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "dotnet run",
+      "test": "dotnet test"
+    },
+    "class-library": {
+      "create": "dotnet new classlib -n {{projectName}} -f net8.0",
+      "install": "dotnet restore",
+      "build": "dotnet build --configuration Release",
+      "start": "echo 'Library project - no start command'",
+      "test": "dotnet test"
+    },
+    "django": {
+      "create": "pip install django && django-admin startproject {{projectName}} .",
+      "install": "pip install -r requirements.txt",
+      "build": "python manage.py collectstatic --noinput",
+      "start": "python manage.py runserver",
+      "test": "python manage.py test"
+    },
+    "flask": {
+      "create": "pip install flask",
+      "install": "pip install -r requirements.txt",
+      "build": "python -c 'import app'",
+      "start": "python app.py",
+      "test": "python -m pytest"
+    },
+    "fastapi": {
+      "create": "pip install fastapi uvicorn",
+      "install": "pip install -r requirements.txt",
+      "build": "python -c 'import main'",
+      "start": "uvicorn main:app --reload",
+      "test": "python -m pytest"
+    },
+    "streamlit": {
+      "create": "pip install streamlit",
+      "install": "pip install -r requirements.txt",
+      "build": "python -c 'import streamlit'",
+      "start": "streamlit run app.py",
+      "test": "python -m pytest"
+    },
+    "jupyter": {
+      "create": "pip install jupyter",
+      "install": "pip install -r requirements.txt",
+      "build": "python -c 'import jupyter'",
+      "start": "jupyter notebook",
+      "test": "python -m pytest"
+    },
+    "python": {
+      "create": "python -m venv venv",
+      "install": "pip install -r requirements.txt",
+      "build": "python -m py_compile *.py",
+      "start": "python main.py",
+      "test": "python -m pytest"
+    },
+    "rust": {
+      "create": "cargo init --name {{projectName}}",
+      "install": "cargo fetch",
+      "build": "cargo build",
+      "start": "cargo run",
+      "test": "cargo test"
+    },
+    "actix-web": {
+      "create": "cargo init --name {{projectName}} && cargo add actix-web",
+      "install": "cargo fetch",
+      "build": "cargo build --release",
+      "start": "cargo run",
+      "test": "cargo test"
+    },
+    "rocket": {
+      "create": "cargo init --name {{projectName}} && cargo add rocket",
+      "install": "cargo fetch",
+      "build": "cargo build --release",
+      "start": "cargo run",
+      "test": "cargo test"
+    },
+    "axum": {
+      "create": "cargo init --name {{projectName}} && cargo add axum tokio",
+      "install": "cargo fetch",
+      "build": "cargo build --release",
+      "start": "cargo run",
+      "test": "cargo test"
+    },
+    "tauri": {
+      "create": "cargo create-tauri-app {{projectName}}",
+      "install": "cargo fetch && npm install",
+      "build": "cargo tauri build",
+      "start": "cargo tauri dev",
+      "test": "cargo test"
+    },
+    "yew": {
+      "create": "cargo init --name {{projectName}} && cargo add yew",
+      "install": "cargo fetch",
+      "build": "trunk build",
+      "start": "trunk serve",
+      "test": "cargo test"
+    },
+    "bevy": {
+      "create": "cargo init --name {{projectName}} && cargo add bevy",
+      "install": "cargo fetch",
+      "build": "cargo build --release",
+      "start": "cargo run",
+      "test": "cargo test"
+    },
+    "go": {
+      "create": "go mod init {{projectName}}",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "gin": {
+      "create": "go mod init {{projectName}} && go get github.com/gin-gonic/gin",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "echo": {
+      "create": "go mod init {{projectName}} && go get github.com/labstack/echo/v4",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "fiber": {
+      "create": "go mod init {{projectName}} && go get github.com/gofiber/fiber/v2",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "beego": {
+      "create": "go mod init {{projectName}} && go get github.com/beego/beego/v2",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "buffalo": {
+      "create": "buffalo new {{projectName}}",
+      "install": "go mod download",
+      "build": "buffalo build",
+      "start": "buffalo dev",
+      "test": "buffalo test"
+    },
+    "cobra": {
+      "create": "go mod init {{projectName}} && go get github.com/spf13/cobra/cobra && cobra init",
+      "install": "go mod download",
+      "build": "go build -o {{projectName}}",
+      "start": "go run .",
+      "test": "go test ./..."
+    },
+    "maven": {
+      "create": "mvn archetype:generate -DgroupId=com.example -DartifactId={{projectName}} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false",
+      "install": "mvn dependency:resolve",
+      "build": "mvn compile",
+      "start": "mvn exec:java",
+      "test": "mvn test"
+    },
+    "gradle": {
+      "create": "gradle init --type java-application --project-name {{projectName}}",
+      "install": "gradle dependencies",
+      "build": "gradle build",
+      "start": "gradle run",
+      "test": "gradle test"
+    },
+    "spring-boot": {
+      "create": "curl https://start.spring.io/starter.zip -d dependencies=web -d name={{projectName}} -o {{projectName}}.zip && unzip {{projectName}}.zip",
+      "install": "mvn dependency:resolve",
+      "build": "mvn compile",
+      "start": "mvn spring-boot:run",
+      "test": "mvn test"
+    },
+    "quarkus": {
+      "create": "mvn io.quarkus:quarkus-maven-plugin:create -DprojectGroupId=com.example -DprojectArtifactId={{projectName}}",
+      "install": "mvn dependency:resolve",
+      "build": "mvn compile quarkus:dev",
+      "start": "mvn quarkus:dev",
+      "test": "mvn test"
+    },
+    "micronaut": {
+      "create": "mn create-app {{projectName}}",
+      "install": "mvn dependency:resolve",
+      "build": "mvn compile",
+      "start": "mvn mn:run",
+      "test": "mvn test"
+    },
+    "android": {
+      "create": "echo 'Use Android Studio to create project'",
+      "install": "gradle dependencies",
+      "build": "gradle assembleDebug",
+      "start": "gradle installDebug",
+      "test": "gradle test"
+    }
+  }
+}
