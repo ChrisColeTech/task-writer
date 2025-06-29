@@ -140,7 +140,6 @@ Task Writer generates scaffold scripts in **all formats supported by [scaffold-s
 
 **Example Output**: `task_01.0.md` with your custom rules + complete file analysis
 
-`````markdown
 # Custom Instructions
 
 Your project uses React with TypeScript. Focus on component reusability and proper type definitions.
@@ -609,4 +608,3 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Built with ❤️ using Electron, React, and TypeScript**
 ````
-`````
