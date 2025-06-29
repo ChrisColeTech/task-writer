@@ -214,7 +214,6 @@ import React from 'react'
 
 ### Task File Example
 
-````markdown
 # Custom Instructions
 
 This is a React TypeScript project. Pay attention to component patterns and type safety.
@@ -607,4 +606,3 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ---
 
 **Built with ❤️ using Electron, React, and TypeScript**
-````
